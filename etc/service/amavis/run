@@ -1,0 +1,13 @@
+#!/bin/bash -e
+
+# Restrict access to the file so that it can contain sensitive content.
+chmod 640 /etc/amavis/conf.d/50-user
+chown :amavis /etc/amavis/conf.d/50-user
+
+# We have to start and stop amavis first through init.d to run preparation code.
+/etc/init.d/amavis start
+/etc/init.d/amavis stop
+
+# Logging goes to syslog (mail).
+
+exec /usr/sbin/amavisd-new foreground 2>&1
