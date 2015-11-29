@@ -1,0 +1,5 @@
+#!/bin/bash -e
+
+# Logging goes to syslog (mail).
+
+exec /usr/sbin/postgrey --inet=10023 2>&1
