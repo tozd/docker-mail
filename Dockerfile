@@ -9,6 +9,8 @@ RUN apt-get update -q -q && \
  addgroup --gid 120 vmail && \
  adduser --system --ingroup vmail --uid 120 --gecos "Virtual email user" --home /srv/mail --shell /bin/sh vmail && \
  cp /etc/postfix/main.cf /etc/postfix/main.cf.orig && \
- cp /etc/postfix/master.cf /etc/postfix/master.cf.orig
+ cp /etc/postfix/master.cf /etc/postfix/master.cf.orig && \
+ sed -r -i 's/^UpdateLogFile/#UpdateLogFile/' /etc/clamav/freshclam.conf && \
+ sed -r -i 's/^LogFile/#LogFile/' /etc/clamav/clamd.conf
 
 COPY ./etc /etc
