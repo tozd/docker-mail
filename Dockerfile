@@ -11,6 +11,8 @@ RUN apt-get update -q -q && \
  cp /etc/postfix/main.cf /etc/postfix/main.cf.orig && \
  cp /etc/postfix/master.cf /etc/postfix/master.cf.orig && \
  sed -r -i 's/^UpdateLogFile/#UpdateLogFile/' /etc/clamav/freshclam.conf && \
- sed -r -i 's/^LogFile/#LogFile/' /etc/clamav/clamd.conf
+ sed -r -i 's/^LogFile/#LogFile/' /etc/clamav/clamd.conf && \
+ sed -r -i 's/^Foreground false$/Foreground true/' /etc/clamav/freshclam.conf && \
+ sed -r -i 's/^Foreground false$/Foreground true/' /etc/clamav/clamd.conf
 
 COPY ./etc /etc
