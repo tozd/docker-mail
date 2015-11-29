@@ -1,0 +1,6 @@
+#!/bin/bash -e
+
+mkdir -p /var/log/sympa/sshd
+chown nobody:nogroup /var/log/sympa/sshd
+
+exec chpst -u nobody:nogroup svlogd -tt /var/log/sympa/sshd
