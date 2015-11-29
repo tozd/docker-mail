@@ -30,7 +30,9 @@ DATABASE="system"
 # Leave empty when using MySQL and enter optional PgSQL schema ending with a dot
 SCHEMA="postfixadmin."
 # For password login in MySQL put the password in your `~/.my.conf`
-# For password login in PgSQL put the password in your `~/.pgpass` with format: hostname:port:database:username:password
+# For password login in PgSQL put the password into a file referenced by PGPASSFILE
+# with format: hostname:port:database:username:password
+export PGPASSFILE="/etc/postfixadmin/pgpass"
 
 ### Auxiliary variables
 if [ "$DBTYPE" = "mysql" ]; then
