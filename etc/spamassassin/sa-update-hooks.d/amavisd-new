@@ -3,7 +3,5 @@
 # This scripts restarts amavisd-new after spamassassin rules got updated.
 # This version of the script uses runit.
 
-# Exit if amavis is not running.
-sv status amavis > /dev/null || exit
-
-sv restart amavis > /dev/null
+# "restart" is our wrapper script for restarting Amavis.
+/etc/service/amavis/restart > /dev/null

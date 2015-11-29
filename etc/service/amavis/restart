@@ -1,0 +1,9 @@
+#!/bin/bash -e
+
+# This is our wrapper script for restarting Amavis. It allows us to reuse the code, but more importantly
+# it allows us to set this command as only the allowed command for the vmail user in the sudoers file.
+
+# Exit if Amavis is not running.
+sv status amavis > /dev/null || exit 0
+
+sv restart amavis
