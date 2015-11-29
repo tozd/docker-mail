@@ -1,7 +1,3 @@
 #!/bin/bash -e
 
-# We have to start and stop clamav-freshclam first through init.d to run preparation code.
-/etc/init.d/clamav-freshclam start
-/etc/init.d/clamav-freshclam stop
-
 exec chpst -u clamav:clamav /usr/bin/freshclam 2>&1

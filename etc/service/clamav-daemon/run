@@ -1,7 +1,15 @@
 #!/bin/bash -e
 
-# We have to start and stop clamav-daemon first through init.d to run preparation code.
-/etc/init.d/clamav-daemon start
-/etc/init.d/clamav-daemon stop
+DATABASEDIR="/var/lib/clamav"
+
+# Check for database existance (start will fail if it's missing).
+for db in main daily; do
+  if [ ! -e "$DATABASEDIR"/"$db".cvd ] && [ ! -d "$DATABASEDIR"/"$db".inc ] && [ ! -e "$DATABASEDIR"/"$db".cld ]; then
+    echo "Clamav signatures missing in $DATABASEDIR"
+    # Sleep a bit so that we do not retry immediately.
+    sleep 30
+    exit 1
+  fi
+done
 
 exec chpst -u clamav:clamav /usr/sbin/clamd 2>&1
