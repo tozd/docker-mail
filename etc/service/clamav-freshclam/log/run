@@ -1,6 +1,0 @@
-#!/bin/bash -e
-
-mkdir -p /var/log/clamav-freshclam
-chown nobody:nogroup /var/log/clamav-freshclam
-
-exec chpst -u nobody:nogroup svlogd -tt /var/log/clamav-freshclam

@@ -1,0 +1,3 @@
+#!/bin/bash -e
+
+/usr/bin/freshclam --quiet -l /var/log/clamav/freshclam.log

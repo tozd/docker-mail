@@ -1,3 +1,0 @@
-#!/bin/bash -e
-
-exec chpst -u clamav:clamav /usr/bin/freshclam 2>&1
