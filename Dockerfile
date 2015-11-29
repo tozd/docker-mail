@@ -8,6 +8,10 @@ RUN apt-get update -q -q && \
  adduser --system --group mailpipe --no-create-home --home /nonexistent && \
  addgroup --gid 120 vmail && \
  adduser --system --ingroup vmail --uid 120 --gecos "Virtual email user" --home /srv/mail --shell /bin/sh vmail && \
+ adduser clamav amavis && \
+ adduser postfix mail && \
+ adduser postfix ssl-cert && \
+ adduser dovecot ssl-cert && \
  cp /etc/postfix/main.cf /etc/postfix/main.cf.orig && \
  cp /etc/postfix/master.cf /etc/postfix/master.cf.orig && \
  sed -r -i 's/^UpdateLogFile/#UpdateLogFile/' /etc/clamav/freshclam.conf && \
