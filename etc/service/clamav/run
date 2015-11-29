@@ -5,7 +5,7 @@ chown clamav:clamav /var/run/clamav
 
 DATABASEDIR="/var/lib/clamav"
 
-# Check for database existence (start will fail if it's missing).
+# Check for database existence (start will fail if it is missing).
 for db in main daily; do
   if [ ! -e "$DATABASEDIR"/"$db".cvd ] && [ ! -d "$DATABASEDIR"/"$db".inc ] && [ ! -e "$DATABASEDIR"/"$db".cld ]; then
     echo "Clamav signatures missing in $DATABASEDIR, running freshclam..."
