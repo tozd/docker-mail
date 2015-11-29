@@ -1,0 +1,7 @@
+#!/bin/bash -e
+
+# We have to start and stop clamav-daemon first through init.d to run preparation code.
+/etc/init.d/clamav-daemon start
+/etc/init.d/clamav-daemon stop
+
+exec chpst -u clamav:clamav /usr/sbin/clamd 2>&1
