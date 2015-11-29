@@ -1,3 +1,0 @@
-# master.cf.append is appended to master.cf when running a Docker image.
-# To modify everything below here modify master.cf.append and run a Docker
-# image again.

@@ -1,4 +1,0 @@
-
-# main.cf.append is appended to main.cf when running a Docker image.
-# To modify everything below here modify main.cf.append and run a Docker
-# image again.

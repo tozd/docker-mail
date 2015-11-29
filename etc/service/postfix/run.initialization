@@ -1,0 +1,1 @@
+[ -f /etc/postfix/include/run.initialization ] && source /etc/postfix/include/run.initialization
