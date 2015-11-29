@@ -7,7 +7,7 @@ for db in main daily; do
   if [ ! -e "$DATABASEDIR"/"$db".cvd ] && [ ! -d "$DATABASEDIR"/"$db".inc ] && [ ! -e "$DATABASEDIR"/"$db".cld ]; then
     echo "Clamav signatures missing in $DATABASEDIR"
     # Sleep a bit so that we do not retry immediately.
-    sleep 30
+    sleep 60
     exit 1
   fi
 done
