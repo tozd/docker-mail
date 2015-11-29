@@ -1,5 +1,8 @@
 #!/bin/bash -e
 
+mkdir -p /var/run/clamav
+chown clamav:clamav /var/run/clamav
+
 DATABASEDIR="/var/lib/clamav"
 
 # Check for database existence (start will fail if it's missing).
