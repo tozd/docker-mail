@@ -6,6 +6,7 @@ RUN apt-get update -q -q && \
   spamassassin unrar-free zoo bzip2 libio-socket-ssl-perl postgrey dovecot-imapd dovecot-pop3d \
   dovecot-managesieved dovecot-pgsql dovecot-sieve --yes --force-yes && \
  adduser --system --group mailpipe --no-create-home --home /nonexistent && \
+ adduser --system --group vmail --gid 120 --uid 120 --gecos "Virtual email user" --home /srv/mail --shell /bin/sh && \
  cp /etc/postfix/main.cf /etc/postfix/main.cf.orig && \
  cp /etc/postfix/master.cf /etc/postfix/master.cf.orig
 
