@@ -1,0 +1,7 @@
+driver = pgsql
+default_pass_scheme = MD5-CRYPT
+password_query = SELECT username AS user, password FROM mailbox WHERE username = '%u' AND active = true
+user_query = SELECT '/srv/mail/filters/' || maildir AS home, '*:storage=' || quota || 'B' AS quota_rule FROM mailbox WHERE username = '%u' AND active = true
+
+# We require /etc/dovecot/secure/connect.conf to be present.
+!include /etc/dovecot/secure/connect.conf
