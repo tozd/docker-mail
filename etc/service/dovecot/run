@@ -8,10 +8,4 @@ chown vmail:vmail /srv/mail
 chown -Rh vmail:vmail /srv/mail/domains /srv/mail/filters /srv/mail/trash
 chmod 700 /srv/mail /srv/mail/domains /srv/mail/filters /srv/mail/trash
 
-mkdir -p /srv/mail/.ssh
-
-chown -Rh root:vmail /srv/mail/.ssh
-chmod 750 /srv/mail/.ssh
-[ -f /srv/mail/.ssh/authorized_keys ] && chmod 640 /srv/mail/.ssh/authorized_keys
-
 exec /usr/sbin/dovecot -F -c /etc/dovecot/dovecot.conf 2>&1

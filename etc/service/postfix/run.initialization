@@ -1,4 +1,26 @@
 chmod 750 /etc/postfixadmin/scripts
 chown :vmail /etc/postfixadmin/scripts
 
+# So that postfixadmin can connect into us with account/domain hooks. /etc/postfixadmin/shared is a
+# volume shared with the postfixadmin container which contains the SSH key that container should use
+# when connecting to this container.
+if [ -e /etc/postfixadmin/shared ]; then
+  # If SSH keys do not exist, create them
+  if [ ! -e /etc/postfixadmin/shared/id_rsa ]; then
+      ssh-keygen -t rsa -f /etc/postfixadmin/shared/id_rsa -N ''
+  fi
+
+  rm -f /etc/postfixadmin/shared/known_hosts
+  echo -n 'mail ' > /etc/postfixadmin/shared/known_hosts
+  cat /etc/ssh/ssh_host_rsa_key.pub >> /etc/postfixadmin/shared/known_hosts
+
+  mkdir -p /srv/mail/.ssh
+  echo -n 'no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty,command="/etc/postfixadmin/scripts/run.sh" ' > /srv/mail/.ssh/authorized_keys
+  cat /etc/sympa/shared/id_rsa.pub >> /srv/mail/.ssh/authorized_keys
+fi
+
+if [ -e /etc/sympa/shared/id_rsa ]; then
+  chown mailpipe /etc/sympa/shared/id_rsa*
+fi
+
 [ -f /etc/postfix/include/run.initialization ] && source /etc/postfix/include/run.initialization
