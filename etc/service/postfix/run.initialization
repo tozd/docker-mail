@@ -5,7 +5,7 @@ chown :vmail /etc/postfixadmin/scripts
 # volume shared with the postfixadmin container which contains the SSH key that container should use
 # when connecting to this container.
 if [ -e /etc/postfixadmin/shared ]; then
-  # If SSH keys do not exist, create them
+  # If SSH keys do not exist, create them.
   if [ ! -e /etc/postfixadmin/shared/id_rsa ]; then
       ssh-keygen -t rsa -f /etc/postfixadmin/shared/id_rsa -N ''
   fi
