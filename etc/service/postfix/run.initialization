@@ -23,4 +23,4 @@ if [ -e /etc/sympa/shared/id_rsa ]; then
   chown mailpipe /etc/sympa/shared/id_rsa*
 fi
 
-[ -f /etc/postfix/include/run.initialization ] && source /etc/postfix/include/run.initialization
+[ -f /config/postfix/run.initialization ] && source /config/postfix/run.initialization
