@@ -12,5 +12,5 @@ map {
   value_field = messages
 }
 
-# We require /etc/dovecot/secure/connect.conf to be present.
-!include /etc/dovecot/secure/connect.conf
+# We require /config/dovecot/connect.conf to be present.
+!include /config/dovecot/connect.conf
