@@ -1,24 +1,19 @@
-#!/bin/sh
-# Script for running scripts for managing Postfix.
+#!/bin/bash -e
 #
-# Author: GW <gw.2009@tnode.com>
-# Version: 0.1
+# Script for running scripts for managing Postfix.
 
 SCRIPTS_PATH='/etc/postfixadmin/scripts'
 SCRIPTS='postfixadmin-domain-postcreation.sh postfixadmin-domain-postdeletion.sh postfixadmin-mailbox-postcreation.sh postfixadmin-mailbox-postdeletion.sh'
 
-if echo "$SSH_ORIGINAL_COMMAND" | egrep -q '[^0-9A-Za-z \._/@+-]' || echo "$SSH_ORIGINAL_COMMAND" | egrep -q ' /|\.\./'; then
-	exit 2
-fi
-
-command=`echo "$SSH_ORIGINAL_COMMAND" | cut -d ' ' -f 1`
+command=$(echo "$SSH_ORIGINAL_COMMAND" | cut -d ' ' -f 1)
+args=$(echo "$SSH_ORIGINAL_COMMAND" | cut -s -d ' ' -f 2-)
 
 for script in $SCRIPTS; do
-	if [ "$command" = "$script" ]; then
-		cd "$SCRIPTS_PATH"
-		"$SCRIPTS_PATH"/$SSH_ORIGINAL_COMMAND
-		exit $?
-	fi
+  if [ "$command" = "$script" ]; then
+    cd "$SCRIPTS_PATH"
+    exec "${SCRIPTS_PATH}/${command}" $args
+    # From now on it is another process.
+  fi
 done
 
 exit 1
