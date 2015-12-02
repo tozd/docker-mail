@@ -1,0 +1,1 @@
+45 7	* * 6	vmail	find /srv/mail/domains/ -path "/*/*/.Junk/cur" -print0 | xargs -n 1000 -0 --no-run-if-empty sa-learn --spam
