@@ -22,6 +22,7 @@ RUN apt-get update -q -q && \
  adduser clamav amavis && \
  adduser postfix mail && \
  adduser postfix ssl-cert && \
+ adduser vmail amavis && \
  echo 'vmail ALL=(root) NOPASSWD: /etc/service/amavis/restart' >> /etc/sudoers && \
  cp /etc/postfix/main.cf /etc/postfix/main.cf.orig && \
  cp /etc/postfix/master.cf /etc/postfix/master.cf.orig && \
