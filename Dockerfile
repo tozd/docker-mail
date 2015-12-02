@@ -2,6 +2,15 @@ FROM tozd/postfix
 
 EXPOSE 110/tcp 143/tcp 993/tcp 995/tcp
 
+VOLUME /config
+VOLUME /etc/postfixadmin/shared
+VOLUME /etc/sympa/shared
+VOLUME /srv/mail
+VOLUME /var/log/clamav
+VOLUME /var/log/dovecot
+VOLUME /var/lib/postgrey
+VOLUME /var/lib/amavis
+
 RUN apt-get update -q -q && \
  apt-get install adduser openssh-server openssh-client postfix-pgsql postfix-doc amavisd-new altermime apt-listchanges \
   arj cabextract clamav-daemon cpio lhasa libmail-dkim-perl libdbd-pg-perl lzop nomarch p7zip ripole rpm \
