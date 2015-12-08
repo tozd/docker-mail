@@ -15,4 +15,4 @@ for db in main daily; do
   fi
 done
 
-exec chpst -u clamav:clamav /usr/sbin/clamd 2>&1
+exec /usr/sbin/clamd 2>&1
