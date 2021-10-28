@@ -1,4 +1,4 @@
-FROM registry.gitlab.com/tozd/docker/postfix:ubuntu-xenial
+FROM registry.gitlab.com/tozd/docker/postfix:ubuntu-trusty
 
 EXPOSE 110/tcp 143/tcp 993/tcp 995/tcp
 
