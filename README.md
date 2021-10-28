@@ -1,13 +1,24 @@
-Image extending [tozd/postfix](https://github.com/tozd/docker-postfix) image to provide
+# tozd/mail
+
+<https://gitlab.com/tozd/docker/mail>
+
+Available as:
+
+* [`tozd/mail`](https://hub.docker.com/r/tozd/mail)
+* [`registry.gitlab.com/tozd/docker/mail`](https://gitlab.com/tozd/docker/mail/container_registry)
+
+## Description
+
+Image extending [tozd/postfix](https://gitlab.com/tozd/docker/postfix) image to provide
 a full-fledged e-mail service with virtual users.
 
 You should make sure you mount all volumes (especially `/srv/mail`) so that you do not lose e-mails and other
 data when you are recreating a container. If volumes are empty, image will initialize them at the first startup.
 
 Integrated services:
- * [tozd/postfix](https://github.com/tozd/docker-postfix) – sending and receiving e-mails, extends the image
- * [tozd/sympa](https://github.com/tozd/docker-sympa) – mailing lists, runs alongside the image
- * [tozd/postfixadmin](https://github.com/tozd/docker-postfixadmin) – virtual users, runs alongside the image
+ * [tozd/postfix](https://gitlab.com/tozd/docker/postfix) – sending and receiving e-mails, extends the image
+ * [tozd/sympa](https://gitlab.com/tozd/docker/sympa) – mailing lists, runs alongside the image
+ * [tozd/postfixadmin](https://gitlab.com/tozd/docker/postfixadmin) – virtual users, runs alongside the image
  * [Amavis](https://www.ijs.si/software/amavisd/) – interface for virus and spam scanning
  * [Clamav](http://www.clamav.net/) – antivirus engine
  * [SpamAssassin](https://spamassassin.apache.org/) – anti-spam platform
@@ -16,9 +27,9 @@ Integrated services:
 
 The intended use of this image is that it is extended to provide necessary configuration files and customizations
 for your installation, and used together with `tozd/sympa` and `tozd/postfixadmin`.
-You can use [tozd/postgresql](https://github.com/tozd/docker-postgresql)
-PostgreSQL database and you can link containers together or use
-[tozd/hosts](https://github.com/tozd/docker-hosts).
+You can use [tozd/postgresql](https://gitlab.com/tozd/docker/postgresql)
+PostgreSQL database.
+You might find [tozd/external-ip](https://gitlab.com/tozd/docker/external-ip) Docker image useful, too.
 
 **The image cannot run without extending (or mounting necessary files into it).**
 
@@ -70,7 +81,7 @@ dovecot_destination_recipient_limit = 1
 relay_domains = proxy:pgsql:/config/postfix/pgsql_relay_domains_maps.cf
 ```
 
-See [full documentation](http://sourceforge.net/p/postfixadmin/code/HEAD/tree/trunk/DOCUMENTS/POSTFIX_CONF.txt) on how
+See [full documentation](https://github.com/postfixadmin/postfixadmin/blob/master/DOCUMENTS/POSTFIX_CONF.txt) on how
 to configure Postfix with Postfix Admin (`tozd/postfixadmin`).
 
 The `/etc/sympa/shared` volume should contain also `sympa_rewrite` and `sympa_transport` files configuring the mailing
