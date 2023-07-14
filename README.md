@@ -9,6 +9,10 @@ Available as:
 - [`tozd/mail`](https://hub.docker.com/r/tozd/mail)
 - [`registry.gitlab.com/tozd/docker/mail`](https://gitlab.com/tozd/docker/mail/container_registry)
 
+## Image inheritance
+
+[`tozd/base`](https://gitlab.com/tozd/docker/base) ← [`tozd/dinit`](https://gitlab.com/tozd/docker/dinit) ← [`tozd/postfix`](https://gitlab.com/tozd/docker/postfix) ← `tozd/mail`
+
 ## Description
 
 Image extending [tozd/postfix](https://gitlab.com/tozd/docker/postfix) image to provide
@@ -110,3 +114,8 @@ Example of a `sympa_transport` file, for each domain you have Sympa providing ma
 /^.+(announce|list|info|event|press|talk|news)\+owner@example\.com$/	sympabounce:
 /^.+(announce|list|info|event|press|talk|news)(-request|-editor|-subscribe|-unsubscribe)?@example\.com$/	sympa:
 ```
+
+## GitHub mirror
+
+There is also a [read-only GitHub mirror available](https://github.com/tozd/docker-mail),
+if you need to fork the project there.
