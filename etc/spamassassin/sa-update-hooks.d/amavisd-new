@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 # This scripts restarts amavisd-new after spamassassin rules got updated.
-# This version of the script uses runit.
+# This version of the script uses dinit.
 
 # "restart" is our wrapper script for restarting Amavis.
 /etc/service/amavis/restart > /dev/null
